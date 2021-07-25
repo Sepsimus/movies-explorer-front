@@ -1,0 +1,4 @@
+.main__ruler-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+}

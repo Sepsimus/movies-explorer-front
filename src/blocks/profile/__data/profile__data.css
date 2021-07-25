@@ -1,0 +1,9 @@
+.profile__data{
+    width: 410px;
+}
+
+@media screen and (max-width: 1279px){
+    .profile__data{
+        width: 260px;
+    }
+}

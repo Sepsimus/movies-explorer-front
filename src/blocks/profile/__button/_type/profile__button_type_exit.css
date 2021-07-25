@@ -1,0 +1,11 @@
+.profile__button_type_exit{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    color: #EE3465;
+}
+
+.profile__button_type_exit:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

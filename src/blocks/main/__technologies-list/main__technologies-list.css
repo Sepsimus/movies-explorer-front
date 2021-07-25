@@ -1,0 +1,22 @@
+.main__technologies-list{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: -4%;
+    color: #FFFFFF;
+    width: 90px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px){
+    .main__technologies-list{
+        font-size: 12px;
+        width: 84px;
+        height: 57px;
+    }
+}

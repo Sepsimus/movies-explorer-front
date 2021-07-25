@@ -1,0 +1,22 @@
+.card__main{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #424242;
+    width: 270px;
+    padding: 14px 0px 25px;
+    height: 24px;
+    margin: 0px;
+}
+
+@media screen and (max-width: 1279px){
+    .card__main{
+        width: 339px;
+        padding-bottom: 29px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .card__main{
+        width: 300px;
+    }
+}

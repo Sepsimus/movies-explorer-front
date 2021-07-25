@@ -1,0 +1,9 @@
+.profile__wrapper_type_email{
+    margin-bottom: 220px;
+}
+
+@media screen and (max-width: 1279px){
+    .profile__wrapper_type_email{
+        margin-bottom: 379px;
+    }
+}

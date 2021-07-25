@@ -1,0 +1,19 @@
+.main__title-h1{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -4%;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0px;
+}
+
+@media screen and (max-width: 767px){
+    .main__title-h1{
+        width: 300px;
+        font-size: 31px;
+        line-height: 39px;
+    }
+}

@@ -1,0 +1,19 @@
+.main__text_type_student{
+    line-height: 22px;
+    margin-bottom: 99px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__text_type_student{
+        margin-top: 20px;
+        margin-bottom: 87px;
+        max-width: 364px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__text_type_student{
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}

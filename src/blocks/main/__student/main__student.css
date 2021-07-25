@@ -1,0 +1,13 @@
+@media screen and (max-width: 1279px){
+    .main__student{
+        max-width: 668px;
+        margin: 0px auto;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__student{
+        max-width: 292px;
+        margin: 0px auto;
+    }
+}

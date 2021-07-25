@@ -1,0 +1,17 @@
+.main__about-project{
+    max-width: 1140px;
+    margin: 0px auto;
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__about-project{
+        max-width: 668px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__about-project{
+        max-width: 284px;
+    }
+}

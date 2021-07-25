@@ -1,0 +1,25 @@
+.main__student-img{
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    padding-top: 66px;
+    padding-left: 320px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__student-img{    
+        width: 255px;
+        height: 307px;
+        padding-left: 49px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__student-img{    
+        width: 292px;
+        height: 352px;
+        padding: 0px;
+        margin-top: 60px;
+        order: -1;
+    }
+}

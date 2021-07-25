@@ -1,0 +1,14 @@
+.footer__wrapper_type_button{
+    display: flex;
+    justify-content: space-between;
+    width: 263px;
+}
+
+@media screen and (max-width: 767px){
+    .footer__wrapper_type_button{
+        flex-direction: column;
+        align-items: center;
+        margin: 0px;
+        margin-top: 30px;
+    }
+}

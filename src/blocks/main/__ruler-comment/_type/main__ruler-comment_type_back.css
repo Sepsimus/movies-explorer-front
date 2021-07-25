@@ -1,0 +1,15 @@
+.main__ruler-comment_type_back{
+    padding: 0px 14px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__ruler-comment_type_back{
+        padding: 9px 10px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__ruler-comment_type_back{
+        padding: 10px 10px;
+    }
+}

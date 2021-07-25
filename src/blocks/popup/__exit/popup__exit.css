@@ -1,0 +1,17 @@
+.popup__exit{
+    background: none;
+    padding: 0px;
+    border: none;
+    width: 22px;
+    height: 22px;
+    background-image: url('../../../image/popup__exit.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 22px;
+    margin-left: 466px;
+}
+
+.popup__exit:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

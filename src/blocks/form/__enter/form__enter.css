@@ -1,0 +1,16 @@
+.form__enter{
+    height: 45px;
+    margin-top: 128px;
+    border: none;
+    background-color: #4285F4;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14x;
+    border-radius: 3px;
+}
+
+.form__enter:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

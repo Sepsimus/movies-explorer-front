@@ -1,0 +1,17 @@
+.main__ruler_color_grey{
+    color: #FFFFFF;
+    background-color: #303030;
+    padding: 9px 356px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__ruler_color_grey{
+        padding: 9px 204px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__ruler_color_grey{
+        padding: 11px 52px;
+    }
+}

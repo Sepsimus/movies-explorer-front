@@ -1,0 +1,12 @@
+@media screen and (max-width: 1279px){
+    .main__title-h3_type_about-project{
+        max-width: 319px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__title-h3_type_about-project{
+        max-width: 284px;
+        margin: 0px;
+    }
+}

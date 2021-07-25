@@ -1,0 +1,15 @@
+.form__already-registered{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #8B8B8B;
+    margin: 0px;
+    margin-top: 16px;
+}
+
+@media screen and (max-width: 1279px){
+    .form__already-registered{
+        font-size: 12px;
+    }
+}

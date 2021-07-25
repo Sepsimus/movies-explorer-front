@@ -1,0 +1,31 @@
+.search__film-input{
+    border: none;
+    background: none;
+    padding: 0px;
+    width: 740px;
+    color: #8B8B8B;
+}
+
+.search__film-input::placeholder{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    color: #8B8B8B;
+}
+
+@media screen and (max-width: 1279px){
+    .search__film-input{
+        width: 338px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .search__film-input{
+        margin-left: 19px;
+        width: 182px;
+    }
+    .search__film-input::placeholder{
+        font-size: 14px;
+    }
+}

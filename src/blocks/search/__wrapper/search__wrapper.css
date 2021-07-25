@@ -1,0 +1,17 @@
+.search__wrapper{
+    display: flex;
+    background-color: #2F2F2F;
+    margin: 70px auto 69px 0px;
+    border-radius: 0px 9px 9px 0px;
+}
+
+
+@media screen and (max-width: 767px){
+    .search__wrapper{
+        margin: 0px;
+        margin-top: 45px;
+        width: 300px;
+        height: 20px;
+        background-color: #202020;
+    }
+}

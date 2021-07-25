@@ -1,0 +1,15 @@
+.main__ruler-comment_type_front{
+    padding: 0px 356px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__ruler-comment_type_front{
+        padding: 9px 204px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__ruler-comment_type_front{
+        padding: 10px 52px;
+    }
+}

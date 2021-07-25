@@ -1,0 +1,26 @@
+.main__technologies-list-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 295px;
+    padding-bottom: 100px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__technologies-list-wrapper{
+        padding-bottom: 90px;
+        margin: 0px auto;
+        max-width: 648px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__technologies-list-wrapper{
+        padding-bottom: 70px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        column-gap: 10px;
+        row-gap: 10px;
+        max-width: 178px;
+    }
+}

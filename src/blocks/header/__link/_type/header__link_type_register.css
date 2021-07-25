@@ -1,0 +1,15 @@
+.header__link_type_register{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin: auto 0px;
+}
+
+@media screen and (max-width: 767px){
+    .header__link_type_register{
+        font-size: 10px;
+    }
+}

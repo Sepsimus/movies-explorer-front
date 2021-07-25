@@ -1,0 +1,6 @@
+.popup__nav-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 105px 0px 621px;
+}

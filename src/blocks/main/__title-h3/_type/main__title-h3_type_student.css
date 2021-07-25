@@ -1,0 +1,19 @@
+.main__title-h3_type_student{
+    font-size: 50px;
+    line-height: 58px;
+    margin-top: 66px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__title-h3_type_student{
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__title-h3_type_student{
+        font-size: 30px;
+        margin-top: 40px;
+    }
+}

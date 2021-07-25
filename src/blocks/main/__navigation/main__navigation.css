@@ -1,0 +1,7 @@
+.main__navigation{
+    max-width: 100%;
+    min-width: 320px;
+    display: flex;
+    justify-content: center;
+    background-color: #272727;
+}

@@ -1,0 +1,17 @@
+.search__checkbox{
+    margin: 26px 0px;
+    width: 36px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #3DDC84;
+    border: none;
+    background-image: url('../../../image/search__tumb.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+@media screen and (max-width: 767px){
+    .search__checkbox{
+        margin: 0px 13px 0px 76px;
+    }
+}

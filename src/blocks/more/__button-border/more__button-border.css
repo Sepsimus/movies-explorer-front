@@ -1,0 +1,18 @@
+.more__button-border{
+    text-align: center;
+    width: 320px;
+    margin: 50px auto 80px;
+    border: 1px solid #424242;
+    border-radius: 6px;
+}
+
+.more__button-border:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px){
+    .more__button-border{
+        width: 240px;
+    }
+}
