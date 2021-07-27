@@ -1,6 +1,7 @@
 .search{
     display: flex;
     max-width: 1140px;
+    min-width: 300px;
     border-bottom: solid 1px #424242;
     margin: 0px auto 10px;
 }

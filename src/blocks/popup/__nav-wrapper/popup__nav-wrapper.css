@@ -2,5 +2,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 105px 0px 621px;
+    margin: 105px auto 621px;
 }
