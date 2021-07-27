@@ -14,6 +14,7 @@ function App() {
   function handleMenuClick(){
     setMenuPopupOpen(true);
   }
+
   function closeAllPopups(){
     setMenuPopupOpen(false);
   };
@@ -36,7 +37,7 @@ function App() {
           </Route>
   
           <Route path="/movies">
-            <Movies 
+            <Movies
             isOpen={isMenuPopupOpen}
             menuOpen={handleMenuClick}
             onClose={closeAllPopups}
