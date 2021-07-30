@@ -1,7 +1,11 @@
 import React from "react";
 import Header from './Header';
+import { CurrentUserContext } from "../context/CurrentUserContext";
 
 function Profile(props){
+
+    const userInfo = React.useContext(CurrentUserContext);
+
     return(
         <>
             <Header 
@@ -14,15 +18,15 @@ function Profile(props){
                 linkSavedMovies={props.linkSavedMovies}/>
 
             <div className="profile__content">
-                <p className="profile__greeting">Привет, Виталий!</p>
+                <p className="profile__greeting">{`Привет, ${userInfo.name}!`}</p>
                 <div className="profile__data">
                     <div className="profile__wrapper profile__wrapper_type_name">
                         <h2 className="profile__text">Имя</h2>
-                        <p className="profile__text">Виталий</p>
+                        <p className="profile__text">{userInfo.name}</p>
                     </div>
                     <div className="profile__wrapper profile__wrapper_type_email">
                         <h2 className="profile__text">E-mail</h2>
-                        <p className="profile__text">pochta@yandex.ru</p>
+                        <p className="profile__text">{userInfo.email}</p>
                     </div>
                 </div>
                 <div className="profile__footer">

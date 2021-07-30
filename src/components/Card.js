@@ -1,5 +1,4 @@
 import React from 'react';
-import card__img from '../image/card__img.jpg'
 
 function Card(props){
     let buttonClass;

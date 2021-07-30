@@ -16,8 +16,9 @@ function SavedMovies (props){
                 linkSavedMovies={props.linkSavedMovies}/>
             <Search 
                 searchClick={props.searchClick}/>
-        {    /*<Cards 
-                type="Saved"/>*/}
+            <Cards 
+                moviesData={props.savedMoviesData}
+                type="Saved"/>
             <div className="savedMovies__devided" />
             <Footer />
         </>
