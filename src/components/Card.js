@@ -3,6 +3,7 @@ import card__img from '../image/card__img.jpg'
 
 function Card(props){
     let buttonClass;
+    let hoursMovie = '';
     let likeClass ='';
     const [isLike, setLike] = React.useState(false);
     
@@ -18,14 +19,16 @@ function Card(props){
         buttonClass = "card__button card__delete"
     }
 
+    if (Math.floor(props.duration/60) !== 0) hoursMovie = `${Math.floor(props.duration/60)}ч`;
+
     return(
         <div className="card">
-            <img className="card__img" src={card__img} alt="Постер"/>
+            <img className="card__img" src={props.image} alt="Постер"/>
             <div className="card__main">
-                <p className="card__name">33 слова о дизайне</p>
+                <p className="card__name">{props.nameRU}</p>
                 <button className={buttonClass + likeClass} onClick={handleLikeClick} type="button"/>
             </div>
-            <p className="card__time">1ч 42м</p>
+            <p className="card__time">{`${hoursMovie} ${props.duration%60}м`}</p>
         </div>
     )
 }

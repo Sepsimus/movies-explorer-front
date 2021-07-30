@@ -3,38 +3,15 @@ import Card from './Card';
 function Cards(props){
     return(
         <section className="cards">
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
-            <Card 
-                type={props.type}/>
+        {props.moviesData.map((item) => (
+                <Card 
+                    type={props.type}
+                    key={item.id}
+                    nameRU={item.nameRU}
+                    image={`${'https://api.nomoreparties.co'}${item.image.url}`}
+                    trailerLink={item.trailerLink}
+                    duration={item.duration}/>
+        ))}
         </section>
     )
 }

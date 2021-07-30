@@ -7,10 +7,18 @@ import NotFound from './NotFound';
 import Register from './Register';
 import Login from './Login';
 import Main from './Main';
+import movieApi from '../utils/movieApi';
 
 function App() {
 
+  const beatFilmApi = new movieApi({
+    baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
+  })
+
+  const [cardsData, setCardsData] = React.useState([]);
+
   const [isMenuPopupOpen, setMenuPopupOpen] = React.useState(false);
+  
   function handleMenuClick(){
     setMenuPopupOpen(true);
   }
@@ -18,6 +26,20 @@ function App() {
   function closeAllPopups(){
     setMenuPopupOpen(false);
   };
+
+  function handleSearchClick(){
+    beatFilmApi.getFilms()
+    .then((movies) => {
+      console.log(movies)
+      localStorage.setItem('movies', JSON.stringify(movies))
+      setCardsData(JSON.parse(localStorage.getItem('movies')));
+    })
+    .catch((err) => {
+      console.log(`Ошибка:${err}. Запрос не выполнен`);
+    })
+  }
+
+console.log(cardsData);
 
   return (
     <div className="substrate">
@@ -38,6 +60,8 @@ function App() {
   
           <Route path="/movies">
             <Movies
+            moviesData={cardsData}
+            searchClick={handleSearchClick}
             isOpen={isMenuPopupOpen}
             menuOpen={handleMenuClick}
             onClose={closeAllPopups}
@@ -49,6 +73,7 @@ function App() {
 
           <Route path="/saved-movies">
             <SavedMovies 
+            searchClick={handleSearchClick}
             isOpen={isMenuPopupOpen}
             menuOpen={handleMenuClick}
             onClose={closeAllPopups}

@@ -14,9 +14,10 @@ function SavedMovies (props){
                 linkMovies={props.linkMovies}
                 linkProfile={props.linkProfile}
                 linkSavedMovies={props.linkSavedMovies}/>
-            <Search />
-            <Cards 
-                type="Saved"/>
+            <Search 
+                searchClick={props.searchClick}/>
+        {    /*<Cards 
+                type="Saved"/>*/}
             <div className="savedMovies__devided" />
             <Footer />
         </>

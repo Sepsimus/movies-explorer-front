@@ -4,6 +4,8 @@
     padding: 0px;
     width: 740px;
     color: #8B8B8B;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .search__film-input::placeholder{
