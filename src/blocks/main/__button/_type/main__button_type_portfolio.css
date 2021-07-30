@@ -1,0 +1,44 @@
+.main__button_type_portfolio{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -4%;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: left;
+    margin: 0px;
+    border-bottom: 1px solid #424242;
+    padding-bottom: 19px;
+    height: 70px;
+    margin-bottom: 20px;
+    background-image: url('../../../../image/portfolio__link.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.main__button_type_portfolio:last-of-type{
+    border: none;
+    margin-bottom: 125px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__button_type_portfolio{
+        font-size: 28px;
+    }
+
+    .main__button_type_portfolio:last-of-type{
+        margin-bottom: 90px;
+    }    
+}
+
+@media screen and (max-width: 767px){
+    .main__button_type_portfolio{
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .main__button_type_portfolio:last-of-type{
+        margin-bottom: 70px;
+        background-size: 18px 28px;
+    }    
+}

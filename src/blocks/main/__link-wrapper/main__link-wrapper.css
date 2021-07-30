@@ -1,0 +1,5 @@
+.main__link-wrapper{
+    width: 132px;
+    display: flex;
+    justify-content: space-between;
+}

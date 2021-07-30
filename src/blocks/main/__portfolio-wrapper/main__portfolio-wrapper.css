@@ -1,0 +1,7 @@
+.main__portfolio-wrapper{
+    margin: 0px auto;
+    max-width: 1140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}

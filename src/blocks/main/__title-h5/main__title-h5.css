@@ -1,0 +1,23 @@
+.main__title-h5{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: left;
+    color: #8B8B8B;
+    margin: 0px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__title-h5{
+        color: #A0A0A0;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__title-h5{
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+}

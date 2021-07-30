@@ -1,0 +1,13 @@
+.popup__profile-link{
+    display: flex;
+    width: 100px;
+    height: 32px;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__profile-link:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

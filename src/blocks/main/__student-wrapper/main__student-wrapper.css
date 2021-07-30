@@ -1,0 +1,20 @@
+.main__student-wrapper{
+    height: 493px;
+    max-width: 1140px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1279px){
+    .main__student-wrapper{
+        height: 463px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__student-wrapper{
+        height: 783px;
+    }
+}

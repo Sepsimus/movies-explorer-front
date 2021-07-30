@@ -1,0 +1,13 @@
+.popup__text{
+    background: none;
+    padding: 0px;
+    border: none;
+    height: 18px;
+    text-decoration: none;
+    font-style: normal;
+    border: none;
+    font-weight: 500;
+    font-size: 13px;
+    color: #FFFFFF;
+    margin-right: 7px;
+}

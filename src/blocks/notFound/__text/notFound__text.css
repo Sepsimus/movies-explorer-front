@@ -1,0 +1,15 @@
+.notFound__text{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0px;
+}
+
+@media screen and (max-width: 767px){
+    .notFound__text{
+        font-size: 12px;
+    }
+}

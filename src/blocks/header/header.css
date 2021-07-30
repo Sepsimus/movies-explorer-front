@@ -1,0 +1,19 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: auto;
+    min-width: 292px;
+}
+
+@media screen and (max-width: 1279px){
+    .header{
+        margin: auto 30px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .header{
+        margin: auto 14px;
+    }
+}

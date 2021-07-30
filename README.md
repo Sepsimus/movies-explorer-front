@@ -1,1 +1,1 @@
-# movies-explorer-front
+# Фронтенд дипломной работы

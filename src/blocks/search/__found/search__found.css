@@ -1,0 +1,16 @@
+.search__found{
+    width: 80px;
+    height: 34px;
+    border-radius: 48px;
+    border: none;
+    background-color: #4285F4;
+    background-image: url('../../../image/search__found.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 19px 0px;
+}
+
+.search__found:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

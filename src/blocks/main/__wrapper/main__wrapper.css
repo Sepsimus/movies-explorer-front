@@ -1,0 +1,19 @@
+.main__wrapper{
+    display: inherit;
+    width: 100%;
+    background-color: #073042;
+    padding-bottom: 122px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__wrapper{
+        padding-bottom: 240px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__wrapper{
+        min-width: 320px;
+        padding-bottom: 180px;
+    }
+}

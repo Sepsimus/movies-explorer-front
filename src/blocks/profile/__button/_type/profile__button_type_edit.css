@@ -1,0 +1,12 @@
+.profile__button_type_edit{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+.profile__button_type_edit:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}

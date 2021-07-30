@@ -1,0 +1,12 @@
+.main__navigation-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 276px;
+}
+
+
+@media screen and (max-width: 767px){
+    .main__navigation-wrapper{
+        width: 194px;
+    }
+}

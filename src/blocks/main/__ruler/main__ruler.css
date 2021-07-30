@@ -1,0 +1,21 @@
+.main__ruler{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px;
+    width: 200px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__ruler{
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__ruler{
+        font-size: 11px;
+        width: 90px;
+    }
+}

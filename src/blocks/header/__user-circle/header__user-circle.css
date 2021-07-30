@@ -1,0 +1,10 @@
+.header__user-circle{
+    border-radius: 50px;
+    background-color: #313131;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 3px 3px 0px;
+}

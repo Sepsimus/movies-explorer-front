@@ -1,0 +1,15 @@
+.card__name{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+    color: #FFFFFF;
+    margin: auto 0px;
+}
+
+@media screen and (max-width: 767px){
+    .card__name{
+        font-size: 12px;
+    }
+}

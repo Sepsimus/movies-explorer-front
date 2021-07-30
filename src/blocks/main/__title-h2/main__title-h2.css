@@ -1,0 +1,31 @@
+.main__title-h2{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    letter-spacing: -4%;
+    text-align: left;
+    color: #FFFFFF;
+    margin: 0px;
+    border-bottom: 1px solid #DADADA;
+    max-width: 1140px;
+    margin: 0px auto;
+    padding-top: 109px;
+    padding-bottom: 23px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__title-h2{
+        max-width: 668px;
+        padding-top: 80px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__title-h2{
+        max-width: 284px;
+        padding-bottom: 28px;
+        padding-top: 60px;
+        font-size: 18px;
+    }
+}

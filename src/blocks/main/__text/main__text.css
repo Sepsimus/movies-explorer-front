@@ -1,0 +1,31 @@
+.main__text{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    color: #FFFFFF;
+    max-width: 550px;
+    margin-top: 26px;
+    margin-bottom: 110px;
+}
+
+@media screen and (max-width: 1279px){
+    .main__text{
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 22px;
+        margin-bottom: 93px;
+        max-width: 319px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__text{
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 16px;
+        margin-bottom: 56px;
+        max-width: 284px;
+    }
+}

@@ -1,0 +1,20 @@
+.main__about-project-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+    flex-wrap: wrap;
+    margin: 0px auto;
+}
+
+@media screen and (max-width: 1279px){
+    .main__about-project-wrapper{
+        height: 287px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .main__about-project-wrapper{
+        height: 332px;
+        margin-top: 60px;
+    }
+}

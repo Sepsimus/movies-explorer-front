@@ -1,0 +1,18 @@
+.header__navigation_type_main{
+    margin: 21px 70px 0px;
+    width: 183px;
+    height: 32px;
+}
+
+@media screen and (max-width: 1279px){
+    .header__navigation_type_main{
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .header__navigation_type_main{
+        margin: 24px 14px 0px;
+        width: 132px;
+    }
+}

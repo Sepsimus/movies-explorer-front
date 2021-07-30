@@ -1,0 +1,17 @@
+.notFound__error-code{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 140px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 767px){
+    .notFound__error-code{
+        font-size: 80px;
+        margin-bottom: 10px;
+    }
+}
