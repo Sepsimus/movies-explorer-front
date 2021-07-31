@@ -17,6 +17,7 @@ function SavedMovies (props){
             <Search 
                 searchClick={props.searchClick}/>
             <Cards 
+                onDeleteMovie={props.onDeleteMovie}
                 moviesData={props.savedMoviesData}
                 type="Saved"/>
             <div className="savedMovies__devided" />

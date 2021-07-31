@@ -29,7 +29,7 @@ function Login(props){
                 <h2 className="form__title">Рады видеть!</h2>
                 <form className="form__container" onSubmit={loginInfo}>
                     <p className="form__placeholder">E-mail</p>
-                    <input id="email-input" className="form__input form__input_email" onChange={handleEmailChange} name="e-mail" type="email" minLength="2" maxLength="40" required />
+                    <input id="email-input" className="form__input form__input_email" onChange={handleEmailChange} name="email" type="email" minLength="2" maxLength="40" required />
                     <span className="email-input-error form__input-error" />
                     <p className="form__placeholder">Пароль</p>
                     <input id="password-input" className="form__input form__input_password" onChange={handlePasswordChange} name="password" type="password" minLength="8" required />

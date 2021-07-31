@@ -19,6 +19,9 @@ function Movies (props){
             <Search 
                 searchClick={props.searchClick}/>
             <Cards 
+                onDeleteMovie={props.onDeleteMovie}
+                savedMoviesData={props.savedMoviesData}
+                onSaveMovie={props.onSaveMovie}
                 moviesData={props.moviesData}
                 type="Movie"/>
             <More />

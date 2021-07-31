@@ -23,7 +23,7 @@ function App() {
     baseUrl: 'http://localhost:3000',
     authorization: localStorage.getItem('jwt'),
   });
-
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [cardsData, setCardsData] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMoviesData, setSavedMoviesData] = React.useState([]);
@@ -32,16 +32,20 @@ function App() {
   React.useEffect(() => {
     Promise.all([projectApi.getMe(), projectApi.getMovies()])
     .then(([userData, savedMoviesData]) => {
-        console.log(userData);
         setCurrentUser(userData);
         setSavedMoviesData(savedMoviesData);
+        setCardsData(JSON.parse(localStorage.getItem('movies') || cardsData));
     })
     .catch((err) => {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }, [localStorage.getItem('jwt')]);
+  
+  function handleLogin(){
+    setLoggedIn(!loggedIn);
+  } 
 
-//console.log(savedMoviesData);
+//console.log(cardsData);
 
   /*function registerNewUser(registerInfo){
     authApi.registration(JSON.stringify(registerInfo))
@@ -60,20 +64,42 @@ function App() {
     projectApi.authorization(JSON.stringify(authorizationInfo))
     .then((authorizationData) => {
       localStorage.setItem('jwt', authorizationData.token);
-      //handleLogin();
+      handleLogin();
       history.push('/movies');
     })
     .catch((err) => {
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
-
-/*  
+  
   function signOut(){
     localStorage.removeItem('jwt');
-    history.push('/sign-in');
-    setLoggedIn(false);
-}*/
+    localStorage.removeItem('movies');
+    history.push('/signin');
+    handleLogin();
+}
+
+function changeUserInfo(newUserInfo){
+  projectApi.editProfile(JSON.stringify(newUserInfo))
+  .then((userData) => setCurrentUser(userData))
+  .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`))
+}
+
+function saveMovie(savedMovieInfo){
+  projectApi.addMovie(JSON.stringify(savedMovieInfo))
+  .then(() => projectApi.getMovies()
+    .then((savedMoviesData) => setSavedMoviesData(savedMoviesData))
+    .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`)))
+  .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`))
+}
+
+function deleteMovie(deleteMovieId){
+  projectApi.deleteMovie(deleteMovieId)
+  .then(() => projectApi.getMovies()
+    .then((savedMoviesData) => setSavedMoviesData(savedMoviesData))
+    .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`)))
+  .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`))
+}
 
   function handleMenuClick(){
     setMenuPopupOpen(true);
@@ -86,7 +112,6 @@ function App() {
   function handleSearchClick(){
     beatFilmApi.getFilms()
     .then((movies) => {
-      //console.log(movies)
       localStorage.setItem('movies', JSON.stringify(movies))
       setCardsData(JSON.parse(localStorage.getItem('movies')));
     })
@@ -94,8 +119,6 @@ function App() {
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
-
-//console.log(cardsData);
 
   return (
     <CurrentUserContext.Provider value = {currentUser}>
@@ -118,6 +141,9 @@ function App() {
     
             <Route path="/movies">
               <Movies
+              onDeleteMovie={deleteMovie}
+              savedMoviesData={savedMoviesData}
+              onSaveMovie={saveMovie}
               moviesData={cardsData}
               searchClick={handleSearchClick}
               isOpen={isMenuPopupOpen}
@@ -131,6 +157,7 @@ function App() {
 
             <Route path="/saved-movies">
               <SavedMovies 
+              onDeleteMovie={deleteMovie}
               savedMoviesData={savedMoviesData}
               searchClick={handleSearchClick}
               isOpen={isMenuPopupOpen}
@@ -144,6 +171,8 @@ function App() {
 
             <Route path="/profile">
               <Profile
+              onChangeUser={changeUserInfo}
+              onSignOut={signOut}
               isOpen={isMenuPopupOpen}
               menuOpen={handleMenuClick}
               onClose={closeAllPopups}
