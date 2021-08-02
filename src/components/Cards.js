@@ -1,27 +1,34 @@
 import Card from './Card';
 
 function Cards(props){
-    return(
-        <section className="cards">
-        {props.moviesData.map((item) => (
-                <Card 
+
+    function cardDraw(){
+        let n;
+        let array =[];
+        if(props.type==="Movie") n=16
+            else{
+                n=props.moviesData.length
+            }
+        for(let i = 0; i < n; i++){
+            let item = props.moviesData[i];
+            array.push(<Card 
                     card={item}
                     onDeleteMovie={props.onDeleteMovie}
                     savedMoviesData={props.savedMoviesData}
                     onSaveMovie={props.onSaveMovie}
-                    country={item.country}
-                    director={item.director}
-                    description={item.description}
-                    year={item.year}
-                    nameEN={item.nameEN}
                     type={props.type}
-                    movieId={item.id || item.movieId}
-                    key={item.id || item.movieId}
-                    nameRU={item.nameRU}
-                    image={ props.type === 'Movie' ? `${'https://api.nomoreparties.co'}${item.image.url}` : item.image}
-                    trailer={item.trailerLink}
-                    duration={item.duration}/>
-        ))}
+                    key={i}
+                    />)
+        }
+        
+        return(array)
+    }
+
+    return(
+        <section className="cards">
+        {
+            cardDraw()
+        }
         </section>
     )
 }
