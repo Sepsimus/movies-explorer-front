@@ -1,10 +1,11 @@
 import React from 'react';
+import { CurrentUserContext } from "../context/CurrentUserContext";
 
 function Card(props){
+    const userInfo = React.useContext(CurrentUserContext);
     let buttonClass;
     let hoursMovie = '';
     let likeClass ='';
-    const button = document.querySelector('.card__button');
     const [isLike, setLike] = React.useState(props.type === 'Movie' ? props.savedMoviesData.some(movie => movie.movieId === props.movieId) : 'another' );
 
     function handleLikeClick(){

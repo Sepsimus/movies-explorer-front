@@ -64,23 +64,24 @@ function App() {
 
 //console.log(cardsData);
 
-  /*function registerNewUser(registerInfo){
-    authApi.registration(JSON.stringify(registerInfo))
+  function registerNewUser(registerInfo){
+    projectApi.registration(JSON.stringify(registerInfo))
     .then((registerData) => {
-      setSuccessfulyRegistered(true);
-      setIsRegisterPopupOpen(true);
+      //setSuccessfulyRegistered(true);
+      //setIsRegisterPopupOpen(true);
     })
     .catch((err) => {
-      setSuccessfulyRegistered(false);
-      setIsRegisterPopupOpen(true);
+      //setSuccessfulyRegistered(false);
+      //setIsRegisterPopupOpen(true);
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
-*/
+
   function authorizationUser(authorizationInfo){
     projectApi.authorization(JSON.stringify(authorizationInfo))
     .then((authorizationData) => {
       localStorage.setItem('jwt', authorizationData.token);
+      setCardsData([])
       handleLogin();
       history.push('/movies');
     })
@@ -145,6 +146,7 @@ function deleteMovie(deleteMovieId){
 
             <Route path="/signup">
               <Register 
+              onRegisterUser={registerNewUser}
               linkAbout="/"
               linkSignIn="/signin"/>
             </Route>
@@ -180,7 +182,7 @@ function deleteMovie(deleteMovieId){
                 path="/saved-movies"
                 onDeleteMovie={deleteMovie}
                 savedMoviesData={savedMoviesData}
-                searchClick={handleSearchClick}
+                //searchClick={handleSearchClick}
                 isOpen={isMenuPopupOpen}
                 menuOpen={handleMenuClick}
                 onClose={closeAllPopups}
