@@ -36,6 +36,7 @@ function Profile(props){
     return(
         <>
             <Header 
+                loggedIn={props.loggedIn}
                 isOpen={props.isOpen}
                 menuOpen={props.menuOpen}
                 onClose={props.onClose}

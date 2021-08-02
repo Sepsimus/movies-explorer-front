@@ -1,8 +1,6 @@
 import React from 'react';
-import { CurrentUserContext } from "../context/CurrentUserContext";
 
 function Card(props){
-    const userInfo = React.useContext(CurrentUserContext);
     let buttonClass;
     let hoursMovie = '';
     let likeClass ='';

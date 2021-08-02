@@ -9,14 +9,24 @@ function Header(props) {
         props.menuOpen();
     }
 
+    const headerClassName = !props.loggedIn ? 'header__navigation_disabled' : ' ';
+    const mainClassName = props.loggedIn ? 'header__navigation_disabled' : ' ';
+    const profileClassName = !props.loggedIn ? 'header__profile-link_disabled' : ' ';
+
     return(
         <header className="header">
             <Link className="logo header__logo" to={props.linkAbout || ''}/>
-            <div className="header__navigation header__navigation_type_header">
+
+            <div className={`${mainClassName} header__navigation header__navigation_type_main`}>
+                        <Link className='header__link header__link_type_register' to={props.linkSignUp || ''}>Регистрация</Link>
+                        <Link className='header__link header__link_type_login' to={props.linkSignIn || ''}>Войти</Link>
+                    </div>
+             
+            <div className={`${headerClassName} header__navigation header__navigation_type_header`}>
                 <Link className='header__link header__link_type_header' to={props.linkMovies || ''}>Фильмы</Link>
                 <Link className='header__link header__link_type_header' to={props.linkSavedMovies || ''}>Сохраненные фильмы</Link>
             </div> 
-            <Link className="header__profile-link" to={props.linkProfile || ''}>
+            <Link className={`${profileClassName} header__profile-link`} to={props.linkProfile || ''}>
                 <p className='header__text'>Аккаунт</p>
                 <div className='header__user-circle'>
                     <img className="header__user-logo" src={header__userLogo} alt="Аватар пользователя" />

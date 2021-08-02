@@ -6,7 +6,8 @@ import Cards from './Cards';
 function SavedMovies (props){
     return(
         <>
-            <Header 
+            <Header
+                loggedIn={props.loggedIn} 
                 isOpen={props.isOpen}
                 menuOpen={props.menuOpen}
                 onClose={props.onClose}

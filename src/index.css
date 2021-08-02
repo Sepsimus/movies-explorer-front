@@ -11,13 +11,15 @@ body{
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__menu/header__menu.css);
-@import url(./blocks/header/___navigation/header__navigation.css);
-@import url(./blocks/header/___navigation/_type/header__navigation_type_header.css);
-@import url(./blocks/header/___navigation/_type/header__navigation_type_main.css);
+@import url(./blocks/header/__navigation/header__navigation.css);
+@import url(./blocks/header/__navigation/_disabled/header__navigation_disabled.css);
+@import url(./blocks/header/__navigation/_type/header__navigation_type_header.css);
+@import url(./blocks/header/__navigation/_type/header__navigation_type_main.css);
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__link/_type/header__link_type_login.css);
 @import url(./blocks/header/__link/_type/header__link_type_register.css);
 @import url(./blocks/header/__profile-link/header__profile-link.css);
+@import url(./blocks/header/__profile-link/_disabled/header__profile-link_disabled.css);
 @import url(./blocks/header/__text/header__text.css);
 @import url(./blocks/header/__user-circle/header__user-circle.css);
 

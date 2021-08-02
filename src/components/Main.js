@@ -1,20 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import student__img from '../image/student__img.png'
+import Header from './Header';
 
 function Main(props){
     return(
         <>
         <div className="main">
             <div className="main__wrapper">
-                <header className="header">
+                <Header 
+                    loggedIn={props.loggedIn}
+                    linkSignUp={props.linkSignUp}
+                    linkSignIn={props.linkSignIn}
+                    linkMovies={props.linkMovies}
+                    linkProfile={props.linkProfile}
+                    linkSavedMovies={props.linkSavedMovies}/>
+                {/* <header className="header">
                     <Link className="logo header__logo" to={props.linkAbout || ''}/>
                     <div className="header__navigation header__navigation_type_main">
                         <Link className='header__link header__link_type_register' to={props.linkSignUp || ''}>Регистрация</Link>
                         <Link className='header__link header__link_type_login' to={props.linkSignIn || ''}>Войти</Link>
                     </div>
-                </header>
+                </header> */}
                 <div className="main__image">
                     <h1 className="main__title-h1">Учебный проект студента факультета Веб-разработки.</h1>
                 </div>

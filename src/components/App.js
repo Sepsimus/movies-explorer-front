@@ -207,6 +207,10 @@ function deleteMovie(deleteMovieId){
 
             <Route exact path ="/">
               <Main 
+              loggedIn={loggedIn}
+              linkMovies="/movies"
+              linkProfile="/profile"
+              linkSavedMovies="/saved-movies"
               linkAbout="/"
               linkSignUp="/signup"
               linkSignIn="/signin"/>
