@@ -10,6 +10,7 @@ import Main from './Main';
 import movieApi from '../utils/movieApi';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 import mainApi from '../utils/mainApi';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
 
@@ -45,6 +46,22 @@ function App() {
     setLoggedIn(!loggedIn);
   } 
 
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if(jwt){
+      projectApi.tokenCheck(jwt)
+      .then((tokenData) => {
+        if(tokenData){
+          handleLogin();
+          history.push('/movies');
+        }
+      })
+      .catch((err) => {
+        console.log(`Ошибка:${err}. Запрос не выполнен`);
+      })
+    }
+  }, []);
+
 //console.log(cardsData);
 
   /*function registerNewUser(registerInfo){
@@ -75,7 +92,7 @@ function App() {
   function signOut(){
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
-    history.push('/signin');
+    history.push('/');
     handleLogin();
 }
 
@@ -139,8 +156,9 @@ function deleteMovie(deleteMovieId){
               linkSignUp="/signup"/>
             </Route>
     
-            <Route path="/movies">
-              <Movies
+
+            <ProtectedRoute 
+              loggedIn={loggedIn}
               onDeleteMovie={deleteMovie}
               savedMoviesData={savedMoviesData}
               onSaveMovie={saveMovie}
@@ -152,35 +170,38 @@ function deleteMovie(deleteMovieId){
               linkAbout="/"
               linkMovies="/movies"
               linkProfile="/profile"
-              linkSavedMovies="/saved-movies"/>
-            </Route>
+              linkSavedMovies="/saved-movies"
+              path="/movies"
+              component={Movies}/>
 
-            <Route path="/saved-movies">
-              <SavedMovies 
-              onDeleteMovie={deleteMovie}
-              savedMoviesData={savedMoviesData}
-              searchClick={handleSearchClick}
-              isOpen={isMenuPopupOpen}
-              menuOpen={handleMenuClick}
-              onClose={closeAllPopups}
-              linkAbout="/"
-              linkMovies="/movies"
-              linkProfile="/profile"
-              linkSavedMovies="/saved-movies"/>
-            </Route>
+              <ProtectedRoute 
+                loggedIn={loggedIn}
+                component={SavedMovies}
+                path="/saved-movies"
+                onDeleteMovie={deleteMovie}
+                savedMoviesData={savedMoviesData}
+                searchClick={handleSearchClick}
+                isOpen={isMenuPopupOpen}
+                menuOpen={handleMenuClick}
+                onClose={closeAllPopups}
+                linkAbout="/"
+                linkMovies="/movies"
+                linkProfile="/profile"
+                linkSavedMovies="/saved-movies"/>
 
-            <Route path="/profile">
-              <Profile
-              onChangeUser={changeUserInfo}
-              onSignOut={signOut}
-              isOpen={isMenuPopupOpen}
-              menuOpen={handleMenuClick}
-              onClose={closeAllPopups}
-              linkAbout="/"
-              linkMovies="/movies"
-              linkProfile="/profile"
-              linkSavedMovies="/saved-movies"/>
-            </Route>
+                <ProtectedRoute 
+                  loggedIn={loggedIn}
+                  component={Profile}
+                  path="/profile"
+                  onChangeUser={changeUserInfo}
+                  onSignOut={signOut}
+                  isOpen={isMenuPopupOpen}
+                  menuOpen={handleMenuClick}
+                  onClose={closeAllPopups}
+                  linkAbout="/"
+                  linkMovies="/movies"
+                  linkProfile="/profile"
+                  linkSavedMovies="/saved-movies"/>
 
             <Route exact path ="/">
               <Main 
