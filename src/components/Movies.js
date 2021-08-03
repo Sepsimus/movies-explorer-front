@@ -19,7 +19,7 @@ function Movies (props){
                 linkSavedMovies={props.linkSavedMovies}/>
             <Search 
                 searchClick={props.searchClick}/>
-            <Cards 
+            <Cards
                 counter={props.counter}
                 onDeleteMovie={props.onDeleteMovie}
                 savedMoviesData={props.savedMoviesData}

@@ -29,13 +29,23 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMoviesData, setSavedMoviesData] = React.useState([]);
   const [isMenuPopupOpen, setMenuPopupOpen] = React.useState(false);
-  const [counter, setCounter] = React.useState(16);
+  const [counter, setCounter] = React.useState(0);
 
   if (counter > 100) setCounter(100);
+
+  function startCardCounter(){
+    if(window.innerWidth >= 1280)
+    setCounter(12);
+    if(window.innerWidth >= 768 && window.innerWidth < 1280)
+      setCounter(8);
+    if(window.innerWidth < 768)
+      setCounter(5);
+  }
 
   React.useEffect(() => {
     Promise.all([projectApi.getMe(), projectApi.getMovies()])
     .then(([userData, savedMoviesData]) => {
+        startCardCounter();
         setCurrentUser(userData);
         setSavedMoviesData(savedMoviesData);
         setCardsData(JSON.parse(localStorage.getItem('movies') || cardsData));
@@ -143,11 +153,11 @@ function deleteMovie(deleteMovieId){
 
   function handleMoreClick(){
     if(window.innerWidth >= 1280)
-      setCounter(counter+16);
+      setCounter(counter+4);
     if(window.innerWidth >= 768 && window.innerWidth < 1280)
-      setCounter(counter+8);
+      setCounter(counter+2);
     if(window.innerWidth < 768)
-      setCounter(counter+5);
+      setCounter(counter+1);
   }
 
   return (
