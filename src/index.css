@@ -11,6 +11,7 @@ body{
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__menu/header__menu.css);
+@import url(./blocks/header/__menu/_disabled/header__menu_disabled.css);
 @import url(./blocks/header/__navigation/header__navigation.css);
 @import url(./blocks/header/__navigation/_disabled/header__navigation_disabled.css);
 @import url(./blocks/header/__navigation/_type/header__navigation_type_header.css);
@@ -34,8 +35,8 @@ body{
 @import url(./blocks/footer/__wrapper/_type/footer__wrapper_type_button.css);
 
 @import url(./blocks/more/more.css);
+@import url(./blocks/more/_disabled/more_disabled.css);
 @import url(./blocks/more/__button/more__button.css);
-@import url(./blocks/more/__button-border/more__button-border.css);
 
 @import url(./blocks/search/search.css);
 @import url(./blocks/search/__form/search__form.css);

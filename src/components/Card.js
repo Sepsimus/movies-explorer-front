@@ -12,17 +12,17 @@ function Card(props){
         setLike(!isLike);
         if(!isLike){
             props.onSaveMovie({
-                country: card.country,
-                director: card.director,
+                country: card.country || ' ',
+                director: card.director || ' ',
                 duration: card.duration,
                 year: card.year,
                 description: card.description,
                 image: image,
-                trailer: card.trailerLink,
+                trailer: card.trailerLink || ' ',
                 thumbnail: image,
                 movieId: card.movieId || card.id,
                 nameRU: card.nameRU,
-                nameEN: card.nameEN,
+                nameEN: card.nameEN || ' ',
             })
         }else{
             let deleteMovieId;

@@ -12,6 +12,7 @@ function Header(props) {
     const headerClassName = !props.loggedIn ? 'header__navigation_disabled' : ' ';
     const mainClassName = props.loggedIn ? 'header__navigation_disabled' : ' ';
     const profileClassName = !props.loggedIn ? 'header__profile-link_disabled' : ' ';
+    const menuClassName = !props.loggedIn ? 'header__menu_disabled' : ' ';
 
     return(
         <header className="header">
@@ -32,7 +33,7 @@ function Header(props) {
                     <img className="header__user-logo" src={header__userLogo} alt="Аватар пользователя" />
                 </div>
             </Link>
-            <button className="header__menu" type="button" onClick={handleClick}/>
+            <button className={`${menuClassName} header__menu`} type="button" onClick={handleClick}/>
             <Popup  
                 isOpen={props.isOpen}
                 onClose={props.onClose}

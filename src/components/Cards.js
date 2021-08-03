@@ -3,13 +3,15 @@ import Card from './Card';
 function Cards(props){
 
     function cardDraw(){
-        let n;
-        let array =[];
-        if(props.type==="Movie") n=16
+        let counter;
+        let array = [];
+        
+        if(localStorage.getItem('movies') === null && props.type==="Movie") return;
+        if(props.type==="Movie") counter=props.counter
             else{
-                n=props.moviesData.length
+                counter=props.moviesData.length
             }
-        for(let i = 0; i < n; i++){
+        for(let i = 0; i < counter; i++){
             let item = props.moviesData[i];
             array.push(<Card 
                     card={item}

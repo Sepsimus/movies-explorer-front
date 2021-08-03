@@ -20,12 +20,15 @@ function Movies (props){
             <Search 
                 searchClick={props.searchClick}/>
             <Cards 
+                counter={props.counter}
                 onDeleteMovie={props.onDeleteMovie}
                 savedMoviesData={props.savedMoviesData}
                 onSaveMovie={props.onSaveMovie}
                 moviesData={props.moviesData}
                 type="Movie"/>
-            <More />
+            <More 
+                counter={props.counter}
+                onMoreClick={props.onMoreClick}/>
             <Footer />
         </>
     )

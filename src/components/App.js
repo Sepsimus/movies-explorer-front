@@ -29,7 +29,10 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMoviesData, setSavedMoviesData] = React.useState([]);
   const [isMenuPopupOpen, setMenuPopupOpen] = React.useState(false);
-  
+  const [counter, setCounter] = React.useState(16);
+
+  if (counter > 100) setCounter(100);
+
   React.useEffect(() => {
     Promise.all([projectApi.getMe(), projectApi.getMovies()])
     .then(([userData, savedMoviesData]) => {
@@ -81,7 +84,7 @@ function App() {
     projectApi.authorization(JSON.stringify(authorizationInfo))
     .then((authorizationData) => {
       localStorage.setItem('jwt', authorizationData.token);
-      setCardsData([])
+      setCardsData([]);
       handleLogin();
       history.push('/movies');
     })
@@ -138,6 +141,15 @@ function deleteMovie(deleteMovieId){
     })
   }
 
+  function handleMoreClick(){
+    if(window.innerWidth >= 1280)
+      setCounter(counter+16);
+    if(window.innerWidth >= 768 && window.innerWidth < 1280)
+      setCounter(counter+8);
+    if(window.innerWidth < 768)
+      setCounter(counter+5);
+  }
+
   return (
     <CurrentUserContext.Provider value = {currentUser}>
       <div className="substrate">
@@ -159,7 +171,9 @@ function deleteMovie(deleteMovieId){
             </Route>
     
 
-            <ProtectedRoute 
+            <ProtectedRoute
+              counter={counter}
+              onMoreClick={handleMoreClick} 
               loggedIn={loggedIn}
               onDeleteMovie={deleteMovie}
               savedMoviesData={savedMoviesData}
