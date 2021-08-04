@@ -73,6 +73,7 @@ body{
 @import url(./blocks/profile/__wrapper/_type/profile__wrapper_type_email.css);
 @import url(./blocks/profile/__wrapper/_type/profile__wrapper_type_name.css);
 @import url(./blocks/profile/__text/profile__text.css);
+@import url(./blocks/profile/__button/_inactive/profile__button_inactive.css);
 
 @import url(./blocks/notFound/notFound.css);
 @import url(./blocks/notFound/__error-code/notFound__error-code.css);
@@ -84,12 +85,17 @@ body{
 @import url(./blocks/form/__already-registered/form__already-registered.css);
 @import url(./blocks/form/__already-registered/_type/form__already-registered_type_button.css);
 @import url(./blocks/form/__container/form__container.css);
+@import url(./blocks/form/__enter-error/_type/form__enter-error_type_login.css);
+@import url(./blocks/form/__enter-error/_type/form__enter-error_type_register.css);
 @import url(./blocks/form/__enter/form__enter.css);
-@import url(./blocks/form/__enter/_type/form__enter_type_login.css);
+@import url(./blocks/form/__enter-error/form__enter-error.css);
 @import url(./blocks/form/__input/form__input.css);
 @import url(./blocks/form/__placeholder/form__placeholder.css);
 @import url(./blocks/form/__title/form__title.css);
 @import url(./blocks/form/__wrapper/form__wrapper.css);
+@import url(./blocks/form/__input-error/form__input-error.css);
+@import url(./blocks/form/__input/_type/form__input_type_red.css);
+@import url(./blocks/form/__enter/_inactive/form__enter_inactive.css);
 
 @import url(./blocks/main/main.css);
 @import url(./blocks/main/__image/main__image.css);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import Movies from './Movies';
 import SavedMovies from './SavedMovies';
@@ -24,12 +25,20 @@ function App() {
     baseUrl: 'http://localhost:3000',
     authorization: localStorage.getItem('jwt'),
   });
+  
+  let location = useLocation();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [cardsData, setCardsData] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMoviesData, setSavedMoviesData] = React.useState([]);
   const [isMenuPopupOpen, setMenuPopupOpen] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
+  const [isError, setIsError] = React.useState('');
+
+  React.useEffect(() => {
+    setIsError('')
+  }, [location.pathname])
+
 
   if (counter > 100) setCounter(100);
 
@@ -79,13 +88,9 @@ function App() {
 
   function registerNewUser(registerInfo){
     projectApi.registration(JSON.stringify(registerInfo))
-    .then((registerData) => {
-      //setSuccessfulyRegistered(true);
-      //setIsRegisterPopupOpen(true);
-    })
+    .then(() => setIsError(''))
     .catch((err) => {
-      //setSuccessfulyRegistered(false);
-      //setIsRegisterPopupOpen(true);
+      setIsError('Что-то пошло не так');
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
@@ -93,12 +98,14 @@ function App() {
   function authorizationUser(authorizationInfo){
     projectApi.authorization(JSON.stringify(authorizationInfo))
     .then((authorizationData) => {
+      setIsError('');
       localStorage.setItem('jwt', authorizationData.token);
       setCardsData([]);
       handleLogin();
       history.push('/movies');
     })
     .catch((err) => {
+      setIsError('Что-то пошло не так');
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
@@ -112,8 +119,13 @@ function App() {
 
 function changeUserInfo(newUserInfo){
   projectApi.editProfile(JSON.stringify(newUserInfo))
-  .then((userData) => setCurrentUser(userData))
-  .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`))
+  .then((userData) => {
+    setIsError('');
+    setCurrentUser(userData)
+  })
+  .catch((err) => {
+    setIsError('Что-то пошло не так');
+    console.log(`Ошибка:${err}. Запрос не выполнен`)})
 }
 
 function saveMovie(savedMovieInfo){
@@ -140,7 +152,8 @@ function deleteMovie(deleteMovieId){
     setMenuPopupOpen(false);
   };
 
-  function handleSearchClick(){
+  function handleSearchClick(e){
+    e.preventDefault();
     beatFilmApi.getFilms()
     .then((movies) => {
       localStorage.setItem('movies', JSON.stringify(movies))
@@ -168,13 +181,15 @@ function deleteMovie(deleteMovieId){
 
             <Route path="/signup">
               <Register 
+              onError={isError}
               onRegisterUser={registerNewUser}
               linkAbout="/"
               linkSignIn="/signin"/>
             </Route>
             
             <Route path="/signin">
-              <Login 
+              <Login
+              onError={isError}
               onAuthorizationUser={authorizationUser}
               linkAbout="/"
               linkSignUp="/signup"/>
@@ -216,6 +231,7 @@ function deleteMovie(deleteMovieId){
                 linkSavedMovies="/saved-movies"/>
 
                 <ProtectedRoute 
+                  onError={isError}
                   loggedIn={loggedIn}
                   component={Profile}
                   path="/profile"

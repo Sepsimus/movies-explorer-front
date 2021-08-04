@@ -1,12 +1,11 @@
 .form__enter{
     height: 45px;
-    margin-top: 128px;
     border: none;
     background-color: #4285F4;
     color: #FFFFFF;
     font-style: normal;
     font-weight: 500;
-    font-size: 14x;
+    font-size: 14px;
     border-radius: 3px;
 }
 
