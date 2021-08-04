@@ -3,8 +3,15 @@ import search__img from '../image/search__img.svg'
 
 function Search(props){
 
+    const route = props.type === 'Movie' ? 'Movie' : 'Saved'
+
+    const [isShortCut, setIsShortCut] = React.useState(false);
     const [searchValue, setSearchValue] = React.useState('');
     const [errorValue, setErrorValue] = React.useState('');
+
+    function handleChangeActive(){
+        setIsShortCut(!isShortCut)
+    }
 
     function searchValid(e){
         e.preventDefault();
@@ -12,13 +19,14 @@ function Search(props){
             setErrorValue('Введите ключевое слово'); 
             return
         }else setErrorValue('');
-        if(localStorage.getItem('movies') !== null) return
-        props.searchClick();
+        props.searchClick(route, searchValue, isShortCut);
     }
 
     function handleSearchChange(e){
         setSearchValue(e.target.value);
     }
+
+    let shortCutClass = !isShortCut ? 'search__checkbox_inactive' : ''
 
     return(
         <>
@@ -31,7 +39,7 @@ function Search(props){
                 <div className="search__line" />
             </form>
             <div className="search__wrapper">
-                <div className="search__checkbox" />
+                <button className={`search__checkbox ${shortCutClass}`} type="button" onClick={handleChangeActive}/>
                 <p className="search__text">Короткометражки</p>
             </div>
         </div>

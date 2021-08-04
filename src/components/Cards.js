@@ -7,7 +7,7 @@ function Cards(props){
         let array = [];
         
         if(localStorage.getItem('movies') === null && props.type==="Movie") return;
-        if(props.type==="Movie"){ 
+        if(props.type==="Movie" && props.moviesData.length > 12){ 
             counter=props.counter
         }else{
                 counter=props.moviesData.length

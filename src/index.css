@@ -45,6 +45,7 @@ body{
 @import url(./blocks/search/__film-input/search__film-input.css);
 @import url(./blocks/search/__found/search__found.css);
 @import url(./blocks/search/__checkbox/search__checkbox.css);
+@import url(./blocks/search/__checkbox/_inactive/search__checkbox_inactive.css);
 @import url(./blocks/search/__text/search__text.css);
 @import url(./blocks/search/__line/search__line.css);
 @import url(./blocks/search/__wrapper/search__wrapper.css);

@@ -19,7 +19,7 @@ function SavedMovies (props){
                 searchClick={props.searchClick}/>
             <Cards 
                 onDeleteMovie={props.onDeleteMovie}
-                moviesData={props.savedMoviesData}
+                moviesData={props.moviesData}
                 type="Saved"/>
             <div className="savedMovies__devided" />
             <Footer />

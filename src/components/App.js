@@ -12,6 +12,7 @@ import movieApi from '../utils/movieApi';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 import mainApi from '../utils/mainApi';
 import ProtectedRoute from './ProtectedRoute';
+import DataFiltr from './DataFiltr';
 
 function App() {
 
@@ -28,9 +29,10 @@ function App() {
 
   let location = useLocation();
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [cardsData, setCardsData] = React.useState([]);
+  const [cardsData, setCardsData] = React.useState([]); // массив отображаемых beatFilms фильмов
+  const [savedCardsData, setSavedCardsData] = React.useState([]); // массив отображаемых сохраненных фильмов
   const [currentUser, setCurrentUser] = React.useState({});
-  const [savedMoviesData, setSavedMoviesData] = React.useState([]);
+  const [savedMoviesData, setSavedMoviesData] = React.useState([]); //массив сохраненных фильмов
   const [isMenuPopupOpen, setMenuPopupOpen] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
   const [isError, setIsError] = React.useState('');
@@ -57,6 +59,7 @@ function App() {
         startCardCounter();
         setCurrentUser(userData);
         setSavedMoviesData(savedMoviesData);
+        setSavedCardsData(savedMoviesData);
         setCardsData(JSON.parse(localStorage.getItem('movies') || cardsData));
     })
     .catch((err) => {
@@ -131,7 +134,10 @@ function changeUserInfo(newUserInfo){
 function saveMovie(savedMovieInfo){
   projectApi.addMovie(JSON.stringify(savedMovieInfo))
   .then(() => projectApi.getMovies()
-    .then((savedMoviesData) => setSavedMoviesData(savedMoviesData))
+    .then((savedMoviesData) => {
+      setSavedMoviesData(savedMoviesData);
+      setSavedCardsData(savedMoviesData)
+    })
     .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`)))
   .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`))
 }
@@ -139,7 +145,10 @@ function saveMovie(savedMovieInfo){
 function deleteMovie(deleteMovieId){
   projectApi.deleteMovie(deleteMovieId)
   .then(() => projectApi.getMovies()
-    .then((savedMoviesData) => setSavedMoviesData(savedMoviesData))
+    .then((savedMoviesData) => {
+      setSavedMoviesData(savedMoviesData);
+      setSavedCardsData(savedMoviesData)
+    })
     .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`)))
   .catch((err) => console.log(`Ошибка:${err}. Запрос не выполнен`))
 }
@@ -152,7 +161,10 @@ function deleteMovie(deleteMovieId){
     setMenuPopupOpen(false);
   };
 
-  function handleSearchClick(){
+  function handleSearchClick(route, searchValue, isShortCut){
+
+    handleFiltrClick(route, searchValue, isShortCut);
+    if(localStorage.getItem('movies') !== null || route !== 'Movie') return
     beatFilmApi.getFilms()
     .then((movies) => {
       localStorage.setItem('movies', JSON.stringify(movies))
@@ -164,6 +176,17 @@ function deleteMovie(deleteMovieId){
     })
   }
 
+  function handleFiltrClick(route, searchValue, isShortCut){
+    if(localStorage.getItem('movies') === null) return
+    const startArray = route === 'Movie' ? JSON.parse(localStorage.getItem('movies')) : savedMoviesData;
+    if(route === 'Movie'){
+      setCardsData(DataFiltr(startArray, searchValue, isShortCut));
+    }else{
+      setSavedCardsData(DataFiltr(startArray, searchValue, isShortCut));
+    }
+    //console.log(DataFiltr(startArray, '', isShortCut));
+  }
+
   function handleMoreClick(){
     if(window.innerWidth >= 1280)
       setCounter(counter+4);
@@ -172,6 +195,8 @@ function deleteMovie(deleteMovieId){
     if(window.innerWidth < 768)
       setCounter(counter+1);
   }
+
+// console.log(savedCardsData);
 
   return (
     <CurrentUserContext.Provider value = {currentUser}>
@@ -197,32 +222,33 @@ function deleteMovie(deleteMovieId){
     
 
             <ProtectedRoute
-              onError={isError}
-              counter={counter}
-              onMoreClick={handleMoreClick} 
-              loggedIn={loggedIn}
-              onDeleteMovie={deleteMovie}
-              savedMoviesData={savedMoviesData}
-              onSaveMovie={saveMovie}
-              moviesData={cardsData}
-              searchClick={handleSearchClick}
-              isOpen={isMenuPopupOpen}
-              menuOpen={handleMenuClick}
-              onClose={closeAllPopups}
-              linkAbout="/"
-              linkMovies="/movies"
-              linkProfile="/profile"
-              linkSavedMovies="/saved-movies"
-              path="/movies"
-              component={Movies}/>
+                onError={isError}
+                counter={counter}
+                onMoreClick={handleMoreClick} 
+                loggedIn={loggedIn}
+                onDeleteMovie={deleteMovie}
+                savedMoviesData={savedMoviesData}
+                onSaveMovie={saveMovie}
+                moviesData={cardsData}
+                searchClick={handleSearchClick}
+                isOpen={isMenuPopupOpen}
+                menuOpen={handleMenuClick}
+                onClose={closeAllPopups}
+                linkAbout="/"
+                linkMovies="/movies"
+                linkProfile="/profile"
+                linkSavedMovies="/saved-movies"
+                path="/movies"
+                component={Movies}/>
 
               <ProtectedRoute 
+                moviesData={savedCardsData}
                 loggedIn={loggedIn}
                 component={SavedMovies}
                 path="/saved-movies"
                 onDeleteMovie={deleteMovie}
                 savedMoviesData={savedMoviesData}
-                //searchClick={handleSearchClick}
+                searchClick={handleSearchClick}
                 isOpen={isMenuPopupOpen}
                 menuOpen={handleMenuClick}
                 onClose={closeAllPopups}

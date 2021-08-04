@@ -10,6 +10,10 @@
     background-position: right;
 }
 
+.search__checkbox:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 767px){
     .search__checkbox{
         margin: 0px 13px 0px 76px;
