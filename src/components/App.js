@@ -25,7 +25,7 @@ function App() {
     baseUrl: 'http://localhost:3000',
     authorization: localStorage.getItem('jwt'),
   });
-  
+
   let location = useLocation();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [cardsData, setCardsData] = React.useState([]);
@@ -152,14 +152,14 @@ function deleteMovie(deleteMovieId){
     setMenuPopupOpen(false);
   };
 
-  function handleSearchClick(e){
-    e.preventDefault();
+  function handleSearchClick(){
     beatFilmApi.getFilms()
     .then((movies) => {
       localStorage.setItem('movies', JSON.stringify(movies))
       setCardsData(JSON.parse(localStorage.getItem('movies')));
     })
     .catch((err) => {
+      setIsError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
@@ -197,6 +197,7 @@ function deleteMovie(deleteMovieId){
     
 
             <ProtectedRoute
+              onError={isError}
               counter={counter}
               onMoreClick={handleMoreClick} 
               loggedIn={loggedIn}
@@ -247,13 +248,16 @@ function deleteMovie(deleteMovieId){
 
             <Route exact path ="/">
               <Main 
-              loggedIn={loggedIn}
-              linkMovies="/movies"
-              linkProfile="/profile"
-              linkSavedMovies="/saved-movies"
-              linkAbout="/"
-              linkSignUp="/signup"
-              linkSignIn="/signin"/>
+                isOpen={isMenuPopupOpen}
+                menuOpen={handleMenuClick}
+                onClose={closeAllPopups}
+                loggedIn={loggedIn}
+                linkMovies="/movies"
+                linkProfile="/profile"
+                linkSavedMovies="/saved-movies"
+                linkAbout="/"
+                linkSignUp="/signup"
+                linkSignIn="/signin"/>
             </Route>
 
             <Route path="*">

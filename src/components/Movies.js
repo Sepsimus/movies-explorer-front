@@ -18,6 +18,7 @@ function Movies (props){
                 linkProfile={props.linkProfile}
                 linkSavedMovies={props.linkSavedMovies}/>
             <Search 
+                onError={props.onError}
                 searchClick={props.searchClick}/>
             <Cards
                 counter={props.counter}

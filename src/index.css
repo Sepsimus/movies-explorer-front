@@ -39,6 +39,7 @@ body{
 @import url(./blocks/more/__button/more__button.css);
 
 @import url(./blocks/search/search.css);
+@import url(./blocks/search/search-input-error.css);
 @import url(./blocks/search/__form/search__form.css);
 @import url(./blocks/search/__img/search__img.css);
 @import url(./blocks/search/__film-input/search__film-input.css);

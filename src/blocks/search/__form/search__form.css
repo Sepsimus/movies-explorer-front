@@ -2,8 +2,9 @@
     display: flex;
     background-color: #2F2F2F;
     border-radius: 9px 0px 0px 9px;
-    margin: 70px 0px 69px auto;
-    max-width: 913px;
+    height: 72px;
+    margin: 0px 0px 69px 0px;
+    max-width: 944px;
     min-width: 300px;
 }
 

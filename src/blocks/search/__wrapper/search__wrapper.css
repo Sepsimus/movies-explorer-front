@@ -1,7 +1,8 @@
 .search__wrapper{
     display: flex;
+    height: 72px;
     background-color: #2F2F2F;
-    margin: 70px auto 69px 0px;
+    margin: 0px 0px 69px 0px;
     border-radius: 0px 9px 9px 0px;
 }
 
