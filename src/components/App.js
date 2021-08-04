@@ -23,7 +23,7 @@ function App() {
   })
 
   const projectApi = new mainApi({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.kostya2120.diplom.nomoredomains.club',
     authorization: localStorage.getItem('jwt'),
   });
 
@@ -86,8 +86,6 @@ function App() {
       })
     }
   }, []);
-
-//console.log(cardsData);
 
   function registerNewUser(registerInfo){
     projectApi.registration(JSON.stringify(registerInfo))
@@ -184,7 +182,6 @@ function deleteMovie(deleteMovieId){
     }else{
       setSavedCardsData(DataFiltr(startArray, searchValue, isShortCut));
     }
-    //console.log(DataFiltr(startArray, '', isShortCut));
   }
 
   function handleMoreClick(){
@@ -195,8 +192,6 @@ function deleteMovie(deleteMovieId){
     if(window.innerWidth < 768)
       setCounter(counter+1);
   }
-
-// console.log(savedCardsData);
 
   return (
     <CurrentUserContext.Provider value = {currentUser}>

@@ -15,7 +15,7 @@
 @media screen and (max-width: 767px){
     .search{
         max-width: 300px;
-        height: 261px;
+        height: 181px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
