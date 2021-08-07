@@ -23,7 +23,7 @@ function App() {
   })
 
   const projectApi = new mainApi({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.kostya2120.diplom.nomoredomains.club',
     authorization: localStorage.getItem('jwt'),
   });
 
