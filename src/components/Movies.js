@@ -29,6 +29,7 @@ function Movies (props){
                 moviesData={props.moviesData}
                 type="Movie"/>
             <More 
+                moviesData={props.moviesData}
                 counter={props.counter}
                 onMoreClick={props.onMoreClick}/>
             <Footer />

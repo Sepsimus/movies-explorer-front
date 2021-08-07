@@ -25,13 +25,13 @@ function Main(props){
 
             <nav className="main__navigation">
                 <div className="main__navigation-wrapper">
-                    <button className="main__button">О проекте</button>
-                    <button className="main__button">Teхнологии</button>
-                    <button className="main__button">Студент</button>
+                    <a href='#about' className="main__button">О проекте</a>
+                    <a href='#technologies' className="main__button">Teхнологии</a>
+                    <a href='#student' className="main__button">Студент</a>
                 </div>
             </nav>
 
-            <section className="main__about-project">
+            <section className="main__about-project" id={'about'}>
                 <h2 className="main__title-h2">О проекте</h2>
                 <div className="main__about-project-wrapper">
                     <h3 className="main__title-h3 main__title-h3_type_about-project">Дипломный проект включал 5 этапов</h3>
@@ -49,7 +49,7 @@ function Main(props){
                 </div>
             </section>
 
-            <section className="main__technologies">
+            <section className="main__technologies" id={'technologies'}>
                 <h2 className="main__title-h2">Технологии</h2>
                 <div className="main__technologies-wrapper">
                     <h3 className="main__title-h3 main__title-h3_type_technologies">7 Технологий</h3>
@@ -66,7 +66,7 @@ function Main(props){
                 </div>
             </section>
 
-            <section className="main__student">
+            <section className="main__student" id={'student'}>
                 <h2 className="main__title-h2">Студент</h2>
                 <div className="main__student-wrapper">
                     <h3 className="main__title-h3 main__title-h3_type_student">Виталий</h3>
@@ -87,9 +87,9 @@ function Main(props){
                 </div>
                 <div className="main__portfolio-wrapper">
                     <h5 className="main__title-h5 main__title-h5_type_portfolio">Портфолио</h5>
-                    <button className="main__button main__button_type_portfolio">Статичный сайт</button>
-                    <button className="main__button main__button_type_portfolio">Адаптивный сайт</button>
-                    <button className="main__button main__button_type_portfolio">Одностраничное приложение</button>
+                    <a className="main__button main__button_type_portfolio" href="https://github.com/Sepsimus/learn_branches" target="_blank">Статичный сайт</a>
+                    <a className="main__button main__button_type_portfolio" href="https://github.com/Sepsimus/russian-travel" target="_blank">Адаптивный сайт</a>
+                    <a className="main__button main__button_type_portfolio" href="https://github.com/Sepsimus/mesto" target="_blank">Одностраничное приложение</a>
                 </div>
             </section>
 

@@ -6,7 +6,10 @@ function Cards(props){
         let counter;
         let array = [];
         
+        if(props.moviesData.length === 0) return (<p className="cards__error">Ничего не найдено</p>)
+
         if(localStorage.getItem('movies') === null && props.type==="Movie") return;
+        
         if(props.type==="Movie" && props.moviesData.length > 12){ 
             counter=props.counter
         }else{
@@ -20,7 +23,7 @@ function Cards(props){
                     savedMoviesData={props.savedMoviesData}
                     onSaveMovie={props.onSaveMovie}
                     type={props.type}
-                    key={i}
+                    key={item.id || item._id}
                     />)
         }
         

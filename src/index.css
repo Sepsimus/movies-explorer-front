@@ -51,6 +51,7 @@ body{
 @import url(./blocks/search/__wrapper/search__wrapper.css);
 
 @import url(./blocks/cards/cards.css);
+@import url(./blocks/cards/__error/cards__error.css);
 
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__img/card__img.css);

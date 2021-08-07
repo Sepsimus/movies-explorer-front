@@ -43,8 +43,8 @@ function Profile(props){
       setIsValid(target.closest("form").checkValidity());
     };
   
-    const isDisabled = !isValid || (form.name === userInfo.name && form.email === userInfo.email)? 'disabled' : '';
-    const buttonActive = isValid? 'profile__button_active' : 'profile__button_inactive';
+    let isDisabled = isValid && (form.name !== userInfo.name && form.email !== userInfo.email) ? '' : 'disabled';
+    let buttonActive = isValid && (form.name !== userInfo.name && form.email !== userInfo.email) ? 'profile__button_active' : 'profile__button_inactive';
 
     return(
         <>

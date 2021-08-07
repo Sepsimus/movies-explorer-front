@@ -1,6 +1,6 @@
 function More(props){
     const localStorageCheck = localStorage.getItem('movies') === null ? 'more_disabled' : '';
-    const moreClass = props.counter === 100 ? 'more_disabled' : '';
+    const moreClass = props.counter === props.moviesData.length ? 'more_disabled' : '';
 
     function handleMoreClick(){
         props.onMoreClick();

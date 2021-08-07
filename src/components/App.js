@@ -23,7 +23,7 @@ function App() {
   })
 
   const projectApi = new mainApi({
-    baseUrl: 'https://api.kostya2120.diplom.nomoredomains.club',
+    baseUrl: 'http://localhost:3000',
     authorization: localStorage.getItem('jwt'),
   });
 
@@ -41,8 +41,7 @@ function App() {
     setIsError('')
   }, [location.pathname])
 
-
-  if (counter > 100) setCounter(100);
+  if (counter > cardsData.length) setCounter(cardsData.length);
 
   function startCardCounter(){
     if(window.innerWidth >= 1280)
@@ -56,11 +55,11 @@ function App() {
   React.useEffect(() => {
     Promise.all([projectApi.getMe(), projectApi.getMovies()])
     .then(([userData, savedMoviesData]) => {
-        startCardCounter();
         setCurrentUser(userData);
         setSavedMoviesData(savedMoviesData);
-        setSavedCardsData(savedMoviesData);
-        setCardsData(JSON.parse(localStorage.getItem('movies') || cardsData));
+        setSavedCardsData(JSON.parse(localStorage.getItem('searchSavedMovies')) || savedMoviesData);
+        setCardsData(JSON.parse(localStorage.getItem('searchMovies') || localStorage.getItem('movies')) || {});
+        startCardCounter();
     })
     .catch((err) => {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
@@ -78,7 +77,6 @@ function App() {
       .then((tokenData) => {
         if(tokenData){
           handleLogin();
-          history.push('/movies');
         }
       })
       .catch((err) => {
@@ -88,8 +86,15 @@ function App() {
   }, []);
 
   function registerNewUser(registerInfo){
+    const authInfo = {
+      email: registerInfo.email,
+      password: registerInfo.password
+    }
     projectApi.registration(JSON.stringify(registerInfo))
-    .then(() => setIsError(''))
+    .then(() => {
+      setIsError('');
+      authorizationUser(authInfo)
+      })
     .catch((err) => {
       setIsError('Что-то пошло не так');
       console.log(`Ошибка:${err}. Запрос не выполнен`);
@@ -112,6 +117,8 @@ function App() {
   }
   
   function signOut(){
+    localStorage.removeItem('searchMovies');
+    localStorage.removeItem('searchSavedMovies');
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     history.push('/');
@@ -158,9 +165,9 @@ function deleteMovie(deleteMovieId){
   function closeAllPopups(){
     setMenuPopupOpen(false);
   };
-
+ 
   function handleSearchClick(route, searchValue, isShortCut){
-
+    startCardCounter();
     handleFiltrClick(route, searchValue, isShortCut);
     if(localStorage.getItem('movies') !== null || route !== 'Movie') return
     beatFilmApi.getFilms()
@@ -175,11 +182,13 @@ function deleteMovie(deleteMovieId){
   }
 
   function handleFiltrClick(route, searchValue, isShortCut){
-    if(localStorage.getItem('movies') === null) return
+    if(localStorage.getItem('movies') === null && route === 'Movie') return
     const startArray = route === 'Movie' ? JSON.parse(localStorage.getItem('movies')) : savedMoviesData;
     if(route === 'Movie'){
+      localStorage.setItem('searchMovies', JSON.stringify(DataFiltr(startArray, searchValue, isShortCut)))
       setCardsData(DataFiltr(startArray, searchValue, isShortCut));
     }else{
+      localStorage.setItem('searchSavedMovies', JSON.stringify(DataFiltr(startArray, searchValue, isShortCut)))
       setSavedCardsData(DataFiltr(startArray, searchValue, isShortCut));
     }
   }
@@ -199,22 +208,24 @@ function deleteMovie(deleteMovieId){
         <div className="page">
           <Switch>
 
-            <Route path="/signup">
-              <Register 
-              onError={isError}
-              onRegisterUser={registerNewUser}
-              linkAbout="/"
-              linkSignIn="/signin"/>
-            </Route>
-            
-            <Route path="/signin">
-              <Login
-              onError={isError}
-              onAuthorizationUser={authorizationUser}
-              linkAbout="/"
-              linkSignUp="/signup"/>
-            </Route>
-    
+            <ProtectedRoute
+            component={Register}
+            path='/signup'
+            loggedIn={!loggedIn}
+            onError={isError}
+            onRegisterUser={registerNewUser}
+            onAuthorizationUser={authorizationUser}
+            linkAbout="/"
+            linkSignIn="/signin"/>
+
+          <ProtectedRoute
+            component={Login}
+            path='/signin'
+            loggedIn={!loggedIn}
+            onError={isError}
+            onAuthorizationUser={authorizationUser}
+            linkAbout="/"
+            linkSignUp="/signup"/>
 
             <ProtectedRoute
                 onError={isError}
@@ -236,7 +247,7 @@ function deleteMovie(deleteMovieId){
                 path="/movies"
                 component={Movies}/>
 
-              <ProtectedRoute 
+              <ProtectedRoute
                 moviesData={savedCardsData}
                 loggedIn={loggedIn}
                 component={SavedMovies}
