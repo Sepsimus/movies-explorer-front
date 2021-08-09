@@ -23,7 +23,7 @@ function App() {
   })
 
   const projectApi = new mainApi({
-    baseUrl: 'https://api.kostya2120.diplom.nomoredomains.club',
+    baseUrl: 'http://localhost:3000',
     authorization: localStorage.getItem('jwt'),
   });
 
@@ -172,8 +172,9 @@ function deleteMovie(deleteMovieId){
     if(localStorage.getItem('movies') !== null || route !== 'Movie') return
     beatFilmApi.getFilms()
     .then((movies) => {
-      localStorage.setItem('movies', JSON.stringify(movies))
+      localStorage.setItem('movies', JSON.stringify(movies));
       setCardsData(JSON.parse(localStorage.getItem('movies')));
+      handleFiltrClick(route, searchValue, isShortCut);
     })
     .catch((err) => {
       setIsError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
