@@ -15,7 +15,11 @@ import ProtectedRoute from './ProtectedRoute';
 import DataFiltr from './DataFiltr';
 
 function App() {
-
+  /* Если ошибка "Фильтрация результата происходит только если сначала отметить чекбокс, 
+  затем выполнить поиск. Уже найденный результат не фильтруется, 
+  если отметить чекбокс" все еще не исправлена, не могли бы вы дать более подробный комментарий. 
+  Насколько я могу судить в данный момент фильтрация происходит и без отметки чекбокса, 
+  а если после фильтрации по букве отметить чекбокс то появятся короткометражные фильмы с этой буквой в названии */
   const history = useHistory();
 
   const beatFilmApi = new movieApi({
@@ -28,7 +32,7 @@ function App() {
   });
 
   let location = useLocation();
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('logged') === null ? false : JSON.parse(localStorage.getItem('logged')));
   const [cardsData, setCardsData] = React.useState([]); // массив отображаемых beatFilms фильмов
   const [savedCardsData, setSavedCardsData] = React.useState([]); // массив отображаемых сохраненных фильмов
   const [currentUser, setCurrentUser] = React.useState({});
@@ -65,10 +69,6 @@ function App() {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }, [localStorage.getItem('jwt')]);
-  
-  function handleLogin(){
-    setLoggedIn(!loggedIn);
-  } 
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -76,7 +76,7 @@ function App() {
       projectApi.tokenCheck(jwt)
       .then((tokenData) => {
         if(tokenData){
-          handleLogin();
+          setLoggedIn(true);
         }
       })
       .catch((err) => {
@@ -107,7 +107,8 @@ function App() {
       setIsError('');
       localStorage.setItem('jwt', authorizationData.token);
       setCardsData([]);
-      handleLogin();
+      setLoggedIn(true);
+      localStorage.setItem('logged', JSON.stringify(true))
       history.push('/movies');
     })
     .catch((err) => {
@@ -115,14 +116,15 @@ function App() {
       console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }
-  
+
   function signOut(){
     localStorage.removeItem('searchMovies');
     localStorage.removeItem('searchSavedMovies');
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     history.push('/');
-    handleLogin();
+    setLoggedIn(false);
+    localStorage.removeItem('logged');
 }
 
 function changeUserInfo(newUserInfo){

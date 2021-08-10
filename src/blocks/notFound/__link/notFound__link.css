@@ -1,4 +1,6 @@
-.notFound__link{
+.notFound__link{    
+    background: none;
+    border: none;
     text-decoration: none;
     font-style: normal;
     font-weight: normal;
@@ -7,6 +9,11 @@
     color: #4285F4;
     margin: 0px;
     margin-top: 184px;
+}
+
+.notFound__link:hover{
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 767px){
