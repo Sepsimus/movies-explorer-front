@@ -1,0 +1,24 @@
+.search-input-error{
+    max-width: 1140px;
+    min-width: 300px;
+    margin: 42px auto 6px;
+    height: 22px;
+    border: none;
+    color: #EE3465;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 1279px){
+    .search-input-error{
+        max-width: 708px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .search-input-error{
+        margin-top: 62px;
+        max-width: 300px;
+    }
+}

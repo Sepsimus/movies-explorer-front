@@ -3,7 +3,10 @@
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
-    text-align: center;
+    text-align: right;
     color: #FFFFFF;
     margin: 0px;
+
+    border: none;
+    background: none;
 }

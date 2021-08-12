@@ -1,9 +1,14 @@
-function More(){
+function More(props){
+    const localStorageCheck = localStorage.getItem('movies') === null ? 'more_disabled' : '';
+    const moreClass = props.counter === props.moviesData.length ? 'more_disabled' : '';
+
+    function handleMoreClick(){
+        props.onMoreClick();
+    }
+
     return(
-        <div className="more">
-            <div className="more__button-border">
-                <button className="more__button">Ещё</button>
-            </div>        
+        <div className={`more ${moreClass} ${localStorageCheck}`}>
+            <button className="more__button" type="button" onClick={handleMoreClick}>Ещё</button>
         </div>
     )
 }

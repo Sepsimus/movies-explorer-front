@@ -1,0 +1,8 @@
+.form__enter_inactive{
+    background-color: #2F2F2F;
+}
+
+.form__enter_inactive:hover{
+    cursor: default;
+    opacity: 1;
+}

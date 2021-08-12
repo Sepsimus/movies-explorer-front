@@ -11,13 +11,16 @@ body{
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__menu/header__menu.css);
-@import url(./blocks/header/___navigation/header__navigation.css);
-@import url(./blocks/header/___navigation/_type/header__navigation_type_header.css);
-@import url(./blocks/header/___navigation/_type/header__navigation_type_main.css);
+@import url(./blocks/header/__menu/_disabled/header__menu_disabled.css);
+@import url(./blocks/header/__navigation/header__navigation.css);
+@import url(./blocks/header/__navigation/_disabled/header__navigation_disabled.css);
+@import url(./blocks/header/__navigation/_type/header__navigation_type_header.css);
+@import url(./blocks/header/__navigation/_type/header__navigation_type_main.css);
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__link/_type/header__link_type_login.css);
 @import url(./blocks/header/__link/_type/header__link_type_register.css);
 @import url(./blocks/header/__profile-link/header__profile-link.css);
+@import url(./blocks/header/__profile-link/_disabled/header__profile-link_disabled.css);
 @import url(./blocks/header/__text/header__text.css);
 @import url(./blocks/header/__user-circle/header__user-circle.css);
 
@@ -32,20 +35,23 @@ body{
 @import url(./blocks/footer/__wrapper/_type/footer__wrapper_type_button.css);
 
 @import url(./blocks/more/more.css);
+@import url(./blocks/more/_disabled/more_disabled.css);
 @import url(./blocks/more/__button/more__button.css);
-@import url(./blocks/more/__button-border/more__button-border.css);
 
 @import url(./blocks/search/search.css);
+@import url(./blocks/search/search-input-error.css);
 @import url(./blocks/search/__form/search__form.css);
 @import url(./blocks/search/__img/search__img.css);
 @import url(./blocks/search/__film-input/search__film-input.css);
 @import url(./blocks/search/__found/search__found.css);
 @import url(./blocks/search/__checkbox/search__checkbox.css);
+@import url(./blocks/search/__checkbox/_inactive/search__checkbox_inactive.css);
 @import url(./blocks/search/__text/search__text.css);
 @import url(./blocks/search/__line/search__line.css);
 @import url(./blocks/search/__wrapper/search__wrapper.css);
 
 @import url(./blocks/cards/cards.css);
+@import url(./blocks/cards/__error/cards__error.css);
 
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__img/card__img.css);
@@ -70,6 +76,7 @@ body{
 @import url(./blocks/profile/__wrapper/_type/profile__wrapper_type_email.css);
 @import url(./blocks/profile/__wrapper/_type/profile__wrapper_type_name.css);
 @import url(./blocks/profile/__text/profile__text.css);
+@import url(./blocks/profile/__button/_inactive/profile__button_inactive.css);
 
 @import url(./blocks/notFound/notFound.css);
 @import url(./blocks/notFound/__error-code/notFound__error-code.css);
@@ -81,12 +88,17 @@ body{
 @import url(./blocks/form/__already-registered/form__already-registered.css);
 @import url(./blocks/form/__already-registered/_type/form__already-registered_type_button.css);
 @import url(./blocks/form/__container/form__container.css);
+@import url(./blocks/form/__enter-error/_type/form__enter-error_type_login.css);
+@import url(./blocks/form/__enter-error/_type/form__enter-error_type_register.css);
 @import url(./blocks/form/__enter/form__enter.css);
-@import url(./blocks/form/__enter/_type/form__enter_type_login.css);
+@import url(./blocks/form/__enter-error/form__enter-error.css);
 @import url(./blocks/form/__input/form__input.css);
 @import url(./blocks/form/__placeholder/form__placeholder.css);
 @import url(./blocks/form/__title/form__title.css);
 @import url(./blocks/form/__wrapper/form__wrapper.css);
+@import url(./blocks/form/__input-error/form__input-error.css);
+@import url(./blocks/form/__input/_type/form__input_type_red.css);
+@import url(./blocks/form/__enter/_inactive/form__enter_inactive.css);
 
 @import url(./blocks/main/main.css);
 @import url(./blocks/main/__image/main__image.css);
