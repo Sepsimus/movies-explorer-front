@@ -15,11 +15,7 @@ import ProtectedRoute from './ProtectedRoute';
 import DataFiltr from './DataFiltr';
 
 function App() {
-  /* Если ошибка "Фильтрация результата происходит только если сначала отметить чекбокс, 
-  затем выполнить поиск. Уже найденный результат не фильтруется, 
-  если отметить чекбокс" все еще не исправлена, не могли бы вы дать более подробный комментарий. 
-  Насколько я могу судить в данный момент фильтрация происходит и без отметки чекбокса, 
-  а если после фильтрации по букве отметить чекбокс то появятся короткометражные фильмы с этой буквой в названии */
+  
   const history = useHistory();
 
   const beatFilmApi = new movieApi({
@@ -27,7 +23,7 @@ function App() {
   })
 
   const projectApi = new mainApi({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.kostya2120.diplom.nomoredomains.club',
     authorization: localStorage.getItem('jwt'),
   });
 
@@ -63,7 +59,6 @@ function App() {
         setSavedMoviesData(savedMoviesData);
         setSavedCardsData(JSON.parse(localStorage.getItem('searchSavedMovies')) || savedMoviesData);
         setCardsData(JSON.parse(localStorage.getItem('searchMovies') || localStorage.getItem('movies')) || {});
-        //localStorage.setItem('searchSavedMovies', JSON.stringify(savedCardsData));
         localStorage.setItem('searchSavedMoviesForShortCut', JSON.stringify(savedMoviesData))
         startCardCounter();
     })
