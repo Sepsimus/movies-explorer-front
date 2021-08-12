@@ -19,6 +19,7 @@ function Movies (props){
                 linkSavedMovies={props.linkSavedMovies}/>
             <Search 
                 type="Movie"
+                onShortCutFilter={props.onShortCutFilter}
                 onError={props.onError}
                 searchClick={props.searchClick}/>
             <Cards

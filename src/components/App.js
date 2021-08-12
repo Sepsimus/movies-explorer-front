@@ -27,7 +27,7 @@ function App() {
   })
 
   const projectApi = new mainApi({
-    baseUrl: 'https://api.kostya2120.diplom.nomoredomains.club',
+    baseUrl: 'http://localhost:3000',
     authorization: localStorage.getItem('jwt'),
   });
 
@@ -63,6 +63,8 @@ function App() {
         setSavedMoviesData(savedMoviesData);
         setSavedCardsData(JSON.parse(localStorage.getItem('searchSavedMovies')) || savedMoviesData);
         setCardsData(JSON.parse(localStorage.getItem('searchMovies') || localStorage.getItem('movies')) || {});
+        //localStorage.setItem('searchSavedMovies', JSON.stringify(savedCardsData));
+        localStorage.setItem('searchSavedMoviesForShortCut', JSON.stringify(savedMoviesData))
         startCardCounter();
     })
     .catch((err) => {
@@ -120,6 +122,8 @@ function App() {
   function signOut(){
     localStorage.removeItem('searchMovies');
     localStorage.removeItem('searchSavedMovies');
+    localStorage.removeItem('searchMoviesForShortCut');
+    localStorage.removeItem('searchSavedMoviesForShortCut');
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     history.push('/');
@@ -192,9 +196,29 @@ function deleteMovie(deleteMovieId){
       setCardsData(DataFiltr(startArray, searchValue, isShortCut));
     }else{
       localStorage.setItem('searchSavedMovies', JSON.stringify(DataFiltr(startArray, searchValue, isShortCut)))
+      localStorage.setItem('searchSavedMoviesForShortCut', JSON.stringify(DataFiltr(startArray, searchValue, isShortCut)))
       setSavedCardsData(DataFiltr(startArray, searchValue, isShortCut));
     }
   }
+
+  function shortCutFilter(route, isShortCut){
+    const startArray = route === 'Movie' ? JSON.parse(localStorage.getItem('searchMoviesForShortCut')) : JSON.parse(localStorage.getItem('searchSavedMoviesForShortCut')) ;
+    if (startArray === null) return;
+    let filtredShortCut
+    if (!isShortCut){
+      filtredShortCut = startArray.filter((item) => item.duration <= 40)
+    }else{
+      filtredShortCut = startArray
+    }
+      if(route === 'Movie'){
+        localStorage.setItem('searchMovies', JSON.stringify(filtredShortCut))
+        setCardsData(filtredShortCut);
+      }else{
+        localStorage.setItem('searchSavedMovies', JSON.stringify(filtredShortCut))
+        setSavedCardsData(filtredShortCut);
+      }
+    startCardCounter();
+   }
 
   function handleMoreClick(){
     if(window.innerWidth >= 1280)
@@ -231,6 +255,7 @@ function deleteMovie(deleteMovieId){
             linkSignUp="/signup"/>
 
             <ProtectedRoute
+                onShortCutFilter={shortCutFilter}
                 onError={isError}
                 counter={counter}
                 onMoreClick={handleMoreClick} 
@@ -251,6 +276,7 @@ function deleteMovie(deleteMovieId){
                 component={Movies}/>
 
               <ProtectedRoute
+                onShortCutFilter={shortCutFilter}
                 moviesData={savedCardsData}
                 loggedIn={loggedIn}
                 component={SavedMovies}

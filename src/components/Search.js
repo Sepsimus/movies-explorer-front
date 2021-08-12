@@ -4,13 +4,21 @@ import search__img from '../image/search__img.svg'
 function Search(props){
 
     const route = props.type === 'Movie' ? 'Movie' : 'Saved'
+    let startShortCutPosition
+    let startCheckArray = props.type === 'Movie' ? JSON.parse(localStorage.getItem('searchMovies')) : JSON.parse(localStorage.getItem('searchSavedMovies')) || props.savedMoviesData;
+    if(localStorage.getItem('searchMovies') === null && props.type === 'Movie' ){
+        startShortCutPosition = false;
+    }else{
+        startShortCutPosition = startCheckArray.every((item) => item.duration <= 40)
+    }
 
-    const [isShortCut, setIsShortCut] = React.useState(false);
+    const [isShortCut, setIsShortCut] = React.useState(startShortCutPosition);
     const [searchValue, setSearchValue] = React.useState('');
     const [errorValue, setErrorValue] = React.useState('');
 
     function handleChangeActive(){
         setIsShortCut(!isShortCut)
+        props.onShortCutFilter(route, isShortCut)
     }
 
     function searchValid(e){
